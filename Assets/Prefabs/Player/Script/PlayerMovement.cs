@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private float intervalTime;
     private IMovementStrategy movementStrategy;
     private Player player;
+    private float input;
 
     public void SetMovementStrategy(IMovementStrategy movementStrategy)
     {
@@ -22,14 +23,11 @@ public class PlayerMovement : MonoBehaviour
         SetMovementStrategy(new AccelerateMovement());
     }
 
-    private void Update()
-    {
-        MovePlayer();
-    }
 
-    public void MovePlayer()
+
+    public void MovePlayer(float input)
     {
-        movementStrategy.Move(transform, player);
+        movementStrategy.Move(transform, player, input);
     }
     private void FixedUpdate()
     {
